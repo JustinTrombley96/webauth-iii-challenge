@@ -31,7 +31,7 @@ router.post('/login', (req, res) => {
 				req.session.username = user.username;
 				req.session.loggedIn = true;
 				res.status(200).json({
-					message : token,
+					token,
 				});
 			} else {
 				res.status(401).json({ message: 'You are not Jack!' });
@@ -46,7 +46,6 @@ function generateToken(user) {
 	const payload = {
 		subject    : user.id,
 		username   : user.username,
-		password   : user.password,
 		department : user.department,
 	};
 
